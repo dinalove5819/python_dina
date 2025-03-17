@@ -1,5 +1,3 @@
-inputValue=input("숫자 ==>")
-print(inputValue)
 num1=input("숫자1 ==>")
 print(num1)
 num2=input("숫자2 ==>")
