@@ -1,0 +1,6 @@
+inputValue=input("숫자 ==>")
+print(inputValue)
+num1=input("숫자 ==>")
+print(num1)
+num2input("숫자 ==>")
+print(num)
