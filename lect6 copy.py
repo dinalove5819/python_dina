@@ -29,12 +29,26 @@ for num1 in range(2,10,1): #단
     #print("")
 
 #while문
-#while(True):
-    #num1 = int(input("숫자1 ===> "))
-    #num2 = int(input("숫자2 ===> "))
-    #res = num1+num2
-    #print(num1, "+", num2, "=", num1 + num2)
+while(True):
+    num1 = int(input("숫자1 ===> "))
+    #num1 이 0이면 반복문 종료
+    if num1 == 0:
+        break
+    num2 = int(input("숫자2 ===> "))
+    res = num1+num2
+    print(num1, "+", num2, "=", num1 + num2)
 
-    
+#연습2
+#1부터 100까지 더하되 4의 배수는 더하지 않음
+#3의 배수도 더하지 않음
+res = 0
+for i in range(1,101,1):
+    if i % 4 == 0:
+        continue
+    elif i % 3 == 0:
+    res = res + i
+    print (res)
+
+
 
 
