@@ -20,12 +20,30 @@ def click_btnCheck():
     count += 1                                  #시도 횟수 증가
     successGame = False                         #성공 여부 확인 변수
     #-------------------과제 영역 시작-----------------------#
-    #정답인 경우 successGame를 참으로 지정
+    # 사용자 입력 처리
+    user = [entryLec1.get(), entryLec2.get(), entryLec3.get()]
+    if len(set(user)) != 3:
+        msgbox.showwarning("경고", "서로 다른 숫자를 입력하세요.")
+        return
 
+    # 정답 리스트로 변환
+    answer_list = list(answer)
+
+    # 스트라이크 & 볼 계산
     strike = 0
     ball = 0
-    output_str = str(strike)+"S"+" "+str(ball)+"B"
-    btnCheck["text"] = (output_str)
+    for i in range(3):
+        if user[i] == answer_list[i]:
+            strike += 1
+        elif user[i] in answer_list:
+            ball += 1
+
+    output_str = str(strike) + "S " + str(ball) + "B"
+    btnCheck["text"] = output_str
+
+    # 정답이면 successGame
+    if strike == 3:
+        successGame = True
     #------------------- 과제 영역 끝 -----------------------#
 
     # Game End (9번의 기회를 모두 사용한 경우)
