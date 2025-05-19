@@ -1,8 +1,29 @@
 import tkinter
 import random
+import tkinter.messagebox
 
 root = tkinter.Tk()
 root.title("캔버스 만들기")
+
+result = [
+    "전생에 고양이었을 가능성은 매우 낮습니다.",
+    "보통 사람입니다.",
+    "특별히 이상한 곳은 없습니다.",
+    "꽤 고양이 다운 구석이 있습니다.",
+    "고양이와 비슷한 성격 같습니다.",
+    "고양이와 근접한 성격입니다.",
+    "전생에 고양이었을지도 모릅니다.",
+    "겉모습은 사람이지만, 속은 고양이일 가능성이 있습니다."
+]
+
+#체크버튼 클릭시
+def chkBtnClick():
+    numchcek = 0
+    if cvalue1.get() == True:
+        numchcek = 0
+        print("체크 되었습니다.")
+    else:
+        print("체크가 해제 되었습니다.")
 
 #좌표 출력기
 def mouseMove(event):
@@ -27,15 +48,7 @@ labelMouse.pack()
 bgimg=tkinter.PhotoImage(file="mina.png")
 canvas.create_image(400,300,image=bgimg)
 
-canvas.create_rectangle(351,394,601,520, fill='darkgray', outline='red')
-
-label = tkinter.Label(root,text=",",font=("맑은고딕",120))
-label.place(x=380, y=60)
-
-button = tkinter.Button(root,text="제비뽑기",font=("맑은 고딕",36),command=click_btn)
-button.place(x=360, y=400)
-
-text= tkinter.Text()
-text.pack()
+textFiled = tkinter.Text()
+textFiled.place(x=330,y=50,width=420,height=300)
 
 root.mainloop()
