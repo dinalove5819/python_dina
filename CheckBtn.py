@@ -1,6 +1,5 @@
 import tkinter
 import random
-from PIL import ImageTk, Image
 
 root = tkinter.Tk()
 root.title("캔버스 만들기")
@@ -16,7 +15,7 @@ def click_btn():
     text.insert(tkinter.END,label["text"+"\n"])
 
 #캔버스 생성
-canvas = tkinter.Canvas(root, width=400, height=600, bg="skyblue")
+canvas = tkinter.Canvas(root, width=800, height=600, bg="skyblue")
 canvas.pack()
 
 #좌표 출력기
@@ -25,7 +24,7 @@ labelMouse=tkinter.Label(root,text=",",font=("맑은고딕",10))
 labelMouse.pack()
 
 #캔버스 내 이미지 생성
-bgimg=tkinter.PhotoImage(file="miko.png")
+bgimg=tkinter.PhotoImage(file="mina.png")
 canvas.create_image(400,300,image=bgimg)
 
 canvas.create_rectangle(351,394,601,520, fill='darkgray', outline='red')
