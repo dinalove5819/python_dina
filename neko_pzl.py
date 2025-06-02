@@ -163,8 +163,8 @@ def game_main():
         draw_neko()
     elif index == 5:  # 마우스 입력 대기
         if 24 <= mouse_x and mouse_x < 24 + 72 * 8 and 24 <= mouse_y and mouse_y < 24 + 72 * 10:
-            cursor_x = int((mouse_x - 24) / 72)
-            cursor_y = int((mouse_y - 24) / 72)
+            cursor_x = int((mouse_x - 24) / 72) #칸 수 만큼 입력 0~7
+            cursor_y = int((mouse_y - 24) / 72) #칸 수 만큼 입력 0~9
             if mouse_c == 1:
                 mouse_c = 0
                 set_neko()
