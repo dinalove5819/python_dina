@@ -30,27 +30,27 @@ for i in range(10):
     check.append([0, 0, 0, 0, 0, 0, 0, 0])
 
 def draw_neko():
-    cvs.delete("NEKO")
-    for y in range(10):
-        for x in range(8):
-            if neko[y][x] > 0:
+    cvs.delete("NEKO") #캔버스에서....을 삭제
+    for y in range(10): # 세로
+        for x in range(8): #가로 
+            if neko[y][x] > 0: #모든 칸에 대해서 실행
                 cvs.create_image(x * 72 + 60, y * 72 + 60, image=img_neko[neko[y][x]], tag="NEKO")
 
 def check_neko():
-    for y in range(10):
-        for x in range(8):
+    for y in range(10): #모든 칸에 대해서 실행
+        for x in range(8): #neko -> check(복사)
             check[y][x] = neko[y][x]
 
     for y in range(1, 9):
-        for x in range(8):
-            if check[y][x] > 0:
+        for x in range(8): #맨 위와 맨 아랫줄을 제외한 모든 칸에 대해서 실행
+            if check[y][x] > 0: # 세로 블럭
                 if check[y - 1][x] == check[y][x] and check[y + 1][x] == check[y][x]:
                     neko[y - 1][x] = 7
                     neko[y][x] = 7
                     neko[y + 1][x] = 7
 
     for y in range(10):
-        for x in range(1, 7):
+        for x in range(1, 7): #맨 왼쪽과 맨 오른쪽을 제외한 모든 칸에 대해서 실행
             if check[y][x] > 0:
                 if check[y][x - 1] == check[y][x] and check[y][x + 1] == check[y][x]:
                     neko[y][x - 1] = 7
@@ -72,16 +72,16 @@ def check_neko():
 def sweep_neko():
     num = 0
     for y in range(10):
-        for x in range(8):
+        for x in range(8): #모든 칸에 대해서 실행
             if neko[y][x] == 7:
-                neko[y][x] = 0
-                num = num + 1
+                neko[y][x] = 0 #빈칸
+                num = num + 1 #파괴된 블럭 개수를 표현
     return num
 
 def drop_neko():
     flg = False
-    for y in range(8, -1, -1):
-        for x in range(8):
+    for y in range(8, -1, -1): #아래에서 위로 검사
+        for x in range(8): #모든 블럭에 대해서 검사
             if neko[y][x] != 0 and neko[y + 1][x] == 0:
                 neko[y + 1][x] = neko[y][x]
                 neko[y][x] = 0
@@ -89,14 +89,14 @@ def drop_neko():
     return flg
 
 def over_neko():
-    for x in range(8):
-        if neko[0][x] > 0:
+    for x in range(8): #맨 윗줄에 블럭이 있으면
+        if neko[0][x] > 0: #게임종료
             return True
     return False
 
 def set_neko():
     for x in range(8):
-        neko[0][x] = random.randint(0, difficulty)
+        neko[0][x] = random.randint(0, difficulty) #블럭을 생성(0번, )
 
 def draw_txt(txt, x, y, siz, col, tg):
     fnt = ("Times New Roman", siz, "bold")
@@ -207,7 +207,7 @@ img_neko = [
     tkinter.PhotoImage(file="neko5.png"),
     tkinter.PhotoImage(file="neko6.png"),
     tkinter.PhotoImage(file="neko_niku.png")
-]
+]# 0,1,2,3,4,5,6,7,8
 
 cvs.create_image(456, 384, image=bg)
 game_main()
